@@ -1,0 +1,152 @@
+@import "tailwindcss";
+
+:root {
+  --white: #ffffff;
+  --off-white: #f8f9fa;
+  --light-gray: #e9ecef;
+  --gray: #6c757d;
+  --dark-gray: #343a40;
+  --gold: #d4af37;
+  --gold-light: #e8c968;
+  --gold-dark: #b8941f;
+  --text-dark: #212529;
+  --text-muted: #6c757d;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: linear-gradient(180deg, var(--white) 0%, var(--off-white) 100%);
+    color: var(--text-dark);
+    font-family: var(--font-urbanist), system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    font-optical-sizing: auto;
+    line-height: 1.6;
+    min-height: 100vh;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: 0.02em;
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    text-transform: uppercase;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 4vw, 3.5rem);
+  }
+
+  h3 {
+    font-size: clamp(1.5rem, 3vw, 2.5rem);
+  }
+
+  p {
+    color: var(--text-muted);
+    line-height: 1.8;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+  }
+
+  button {
+    cursor: pointer;
+    font-family: inherit;
+  }
+}
+
+@layer components {
+  .container {
+    max-width: 1320px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  @media (max-width: 768px) {
+    .container {
+      padding: 0 1.5rem;
+    }
+  }
+}
+
+/* RTL Support */
+[dir="rtl"] {
+  direction: rtl;
+}
+
+/* Only reverse horizontal flex containers that need it */
+[dir="rtl"] .flex-row {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .text-left {
+  text-align: right;
+}
+
+[dir="rtl"] .text-right {
+  text-align: left;
+}
+
+[dir="rtl"] .text-center {
+  text-align: center;
+}
+
+/* RTL spacing adjustments */
+[dir="rtl"] .ml-auto {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .mr-auto {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* RTL padding adjustments */
+[dir="rtl"] .pl-4 {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+[dir="rtl"] .pr-4 {
+  padding-right: 0;
+  padding-left: 1rem;
+}
+
+/* RTL transform adjustments for animations */
+[dir="rtl"] .group-hover\:-translate-x-1 {
+  transform: translateX(0.25rem);
+}
+
+[dir="rtl"] .group-hover\:-translate-x-2 {
+  transform: translateX(0.5rem);
+}
+
+/* Ensure text flows naturally in RTL */
+[dir="rtl"] * {
+  text-align: inherit;
+}
+
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Prevent horizontal scroll on mobile only */
+  body {
+    overflow-x: hidden;
+  }
+}
