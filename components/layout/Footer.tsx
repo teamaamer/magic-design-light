@@ -9,8 +9,8 @@ export default function Footer() {
   return (
     <footer className="bg-gradient-to-b from-[#0a0a0a] to-[#000000] border-t border-[#1a1a1a]">
       <div className="container mx-auto px-6 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
-          <div>
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 mb-12">
+          <div className="col-span-2 lg:col-span-1">
             <div className="flex items-center space-x-3 mb-6">
               <div className="w-10 h-10 bg-[#d4af37] rounded-md flex items-center justify-center">
                 <span className="text-[#0a0a0a] font-bold text-xl">M</span>
