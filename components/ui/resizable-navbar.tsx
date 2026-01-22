@@ -130,11 +130,11 @@ export const NavbarLogo = () => {
   const isArabic = locale === 'ar';
   
   return (
-    <Link href={`/${locale}`} className="flex items-center gap-2 lg:gap-3 group relative z-10 flex-shrink-0 min-w-fit">
+    <Link href={`/${locale}`} className="flex items-center gap-1.5 lg:gap-3 group relative z-10 flex-shrink-0 min-w-fit">
       <div className="relative">
         <div className="absolute -inset-1 bg-gradient-to-r from-[#d4af37] to-[#e8c968] rounded-xl blur-lg opacity-20 group-hover:opacity-40 transition-all duration-500"></div>
-        <div className="relative w-10 h-10 lg:w-14 lg:h-14 bg-gradient-to-br from-[#d4af37] via-[#e8c968] to-[#d4af37] rounded-xl lg:rounded-2xl flex items-center justify-center shadow-xl shadow-[#d4af37]/20 group-hover:shadow-[#d4af37]/40 transition-all duration-300 group-hover:scale-105">
-          <svg className="w-5 h-5 lg:w-7 lg:h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+        <div className="relative w-8 h-8 lg:w-14 lg:h-14 bg-gradient-to-br from-[#d4af37] via-[#e8c968] to-[#d4af37] rounded-lg lg:rounded-2xl flex items-center justify-center shadow-xl shadow-[#d4af37]/20 group-hover:shadow-[#d4af37]/40 transition-all duration-300 group-hover:scale-105">
+          <svg className="w-4 h-4 lg:w-7 lg:h-7 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
             <path strokeLinecap="round" strokeLinejoin="round" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
           </svg>
         </div>
@@ -142,19 +142,19 @@ export const NavbarLogo = () => {
       <div className="flex flex-col -space-y-0.5 lg:-space-y-1">
         {isArabic ? (
           <>
-            <span className="text-white font-bold text-base lg:text-xl tracking-tight leading-none group-hover:text-[#d4af37] transition-colors duration-300">
+            <span className="text-white font-bold text-sm lg:text-xl tracking-tight leading-none group-hover:text-[#d4af37] transition-colors duration-300">
               ماجيك ديزاين
             </span>
-            <span className="text-[#d4af37] text-[8px] lg:text-[10px] font-bold tracking-[0.2em]">
+            <span className="text-[#d4af37] text-[7px] lg:text-[10px] font-bold tracking-[0.2em]">
               لايت
             </span>
           </>
         ) : (
           <>
-            <span className="text-white font-bold text-base lg:text-xl tracking-tight leading-none group-hover:text-[#d4af37] transition-colors duration-300">
+            <span className="text-white font-bold text-sm lg:text-xl tracking-tight leading-none group-hover:text-[#d4af37] transition-colors duration-300">
               Magic Design
             </span>
-            <span className="text-[#d4af37] text-[8px] lg:text-[10px] font-bold tracking-[0.2em] uppercase">
+            <span className="text-[#d4af37] text-[7px] lg:text-[10px] font-bold tracking-[0.2em] uppercase">
               Light
             </span>
           </>
@@ -232,7 +232,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-[10000] mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white/10 backdrop-blur-xl border border-white/20 px-4 py-3 lg:hidden shadow-lg shadow-black/5",
+        "relative z-[10000] mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white/10 backdrop-blur-xl border border-white/20 px-3 py-2 lg:hidden shadow-lg shadow-black/5",
         visible && "bg-white/20 border-white/30",
         className,
       )}
@@ -244,7 +244,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
 
 export const MobileNavHeader = ({ children }: { children: ReactNode }) => {
   return (
-    <div className="flex items-center justify-between w-full max-w-[1600px] mx-auto px-4 h-16">
+    <div className="flex items-center justify-between w-full max-w-[1600px] mx-auto px-4 h-12">
       {children}
     </div>
   );
@@ -260,7 +260,7 @@ export const MobileNavToggle = ({
   return (
     <button
       onClick={onClick}
-      className="relative w-11 h-11 rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
+      className="relative w-9 h-9 rounded-xl flex items-center justify-center text-white hover:bg-white/20 transition-all duration-300"
       aria-label="Toggle menu"
     >
       <AnimatePresence mode="wait">
@@ -272,7 +272,7 @@ export const MobileNavToggle = ({
             exit={{ rotate: 90, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <X size={24} className="text-white" />
+            <X size={20} className="text-white" />
           </motion.div>
         ) : (
           <motion.div
@@ -282,7 +282,7 @@ export const MobileNavToggle = ({
             exit={{ rotate: -90, opacity: 0 }}
             transition={{ duration: 0.2 }}
           >
-            <Menu size={24} className="text-white" />
+            <Menu size={20} className="text-white" />
           </motion.div>
         )}
       </AnimatePresence>

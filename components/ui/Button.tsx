@@ -32,9 +32,9 @@ export default function Button({
   
   // Size variants
   const sizeClasses = {
-    sm: 'h-10 px-5 text-sm gap-2 rounded-full',
-    md: 'h-12 px-7 text-base gap-2.5 rounded-full',
-    lg: 'h-14 px-9 text-lg gap-3 rounded-full',
+    sm: 'h-10 px-5 text-xs md:text-sm gap-2 rounded-full',
+    md: 'h-12 px-7 text-sm md:text-base gap-2.5 rounded-full',
+    lg: 'h-12 md:h-14 px-6 md:px-9 text-sm md:text-lg gap-2 md:gap-3 rounded-full',
   };
   
   // Style variants
