@@ -37,7 +37,7 @@ export default function Hero() {
         </div>
       </div>
 
-      <div className="w-full max-w-[1600px] mx-auto px-8 md:px-12 lg:px-16 xl:px-20 relative z-50 pt-24 md:pt-16">
+      <div className="w-full max-w-[1600px] mx-auto px-8 md:px-12 lg:px-16 xl:px-20 relative z-10 pt-24 md:pt-16">
         <motion.div 
           className="max-w-5xl mx-auto"
           style={{ opacity }}

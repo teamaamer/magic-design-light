@@ -43,7 +43,7 @@ export const Navbar = ({ children, className }: NavbarProps) => {
   return (
     <motion.div
       ref={ref}
-      className={cn("fixed inset-x-0 top-8 z-[9999] w-full", className)}
+      className={cn("fixed inset-x-0 top-8 z-[99999] w-full", className)}
     >
       {React.Children.map(children, (child) =>
         React.isValidElement(child)
@@ -77,7 +77,7 @@ export const NavBody = ({ children, className, visible }: NavBodyProps) => {
         minWidth: "800px",
       }}
       className={cn(
-        "relative z-[10000] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3 lg:flex shadow-lg shadow-black/5",
+        "relative z-[100000] mx-auto hidden w-full max-w-7xl flex-row items-center justify-between self-start rounded-full bg-white/10 backdrop-blur-xl border border-white/20 px-6 py-3 lg:flex shadow-lg shadow-black/5",
         visible && "bg-white/20 border-white/30",
         className,
       )}
@@ -232,7 +232,7 @@ export const MobileNav = ({ children, className, visible }: MobileNavProps) => {
         damping: 50,
       }}
       className={cn(
-        "relative z-[10000] mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white/10 backdrop-blur-xl border border-white/20 px-3 py-2 lg:hidden shadow-lg shadow-black/5",
+        "relative z-[100000] mx-auto flex w-full max-w-[calc(100vw-2rem)] flex-col items-center justify-between bg-white/10 backdrop-blur-xl border border-white/20 px-3 py-2 lg:hidden shadow-lg shadow-black/5",
         visible && "bg-white/20 border-white/30",
         className,
       )}
@@ -306,17 +306,29 @@ export const MobileNavMenu = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className={cn(
-            "absolute inset-x-0 top-16 z-[10001] flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white border border-gray-200 px-4 py-8 shadow-2xl shadow-black/20",
-            className,
-          )}
-        >
-          {children}
-        </motion.div>
+        <>
+          {/* Backdrop */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={onClose}
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[100001]"
+          />
+          {/* Menu */}
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.2 }}
+            className={cn(
+              "absolute inset-x-0 top-14 z-[100002] flex w-full flex-col items-start justify-start gap-4 rounded-lg bg-white border border-gray-200 px-4 py-8 shadow-2xl shadow-black/20",
+              className,
+            )}
+          >
+            {children}
+          </motion.div>
+        </>
       )}
     </AnimatePresence>
   );
