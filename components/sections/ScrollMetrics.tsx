@@ -4,6 +4,7 @@ import { motion, useScroll, useTransform } from 'framer-motion';
 import { useRef } from 'react';
 import { Sparkles, Lightbulb, Award, Users } from 'lucide-react';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { Illustration } from '../ui/glowing-stars';
 
 export default function ScrollMetrics() {
   const { t } = useLanguage();
@@ -57,6 +58,9 @@ export default function ScrollMetrics() {
   // Scroll indicator fade
   const scrollIndicatorOpacity = useTransform(scrollYProgress, [0, 0.05, 0.1], [1, 1, 0]);
 
+  // Stars glow intensity - increases as user scrolls
+  const starsGlowIntensity = useTransform(scrollYProgress, [0, 0.5, 1], [0.3, 0.8, 1]);
+
   const floatingIcons = [
     { Icon: Sparkles, position: 'left-[10%] top-[20%]', delay: 0 },
     { Icon: Lightbulb, position: 'right-[15%] top-[30%]', delay: 0.1 },
@@ -73,10 +77,19 @@ export default function ScrollMetrics() {
       style={{ zIndex: 1 }}
     >
       <motion.div
-        className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden"
-        style={{ backgroundColor: bgColor }}
+        className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden bg-black"
       >
-        {/* Glow Effect */}
+        {/* Glowing Stars Background with increasing intensity */}
+        <motion.div
+          className="absolute inset-0 z-0"
+          style={{ opacity: starsGlowIntensity }}
+        >
+          <div className="w-full h-full">
+            <Illustration mouseEnter={false} />
+          </div>
+        </motion.div>
+
+        {/* Additional Glow Effect */}
         <motion.div
           className="absolute inset-0"
           style={{ opacity: glowOpacity }}

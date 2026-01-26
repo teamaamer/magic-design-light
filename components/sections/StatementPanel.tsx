@@ -6,24 +6,22 @@ import Button from '../ui/Button';
 import { Quote, ArrowRight } from 'lucide-react';
 import { ANIMATION_VARIANTS, VIEWPORT_CONFIG } from '@/lib/constants';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { Illustration } from '../ui/glowing-stars';
 
 export default function StatementPanel() {
   const { t } = useLanguage();
   return (
     <section 
       id="statement-panel" 
-      className="relative bg-gradient-to-b from-[#000000] to-[#0a0a0a] overflow-hidden min-h-screen flex items-center py-12 md:py-16"
+      className="relative bg-black overflow-hidden min-h-screen flex items-center py-12 md:py-16"
       aria-labelledby="statement-heading"
     >
-      {/* Decorative elements */}
-      <div className="absolute inset-0 opacity-5" aria-hidden="true">
-        <div className="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-[#d4af37] to-transparent"></div>
-        <div className="absolute bottom-0 right-0 w-full h-px bg-gradient-to-l from-transparent via-[#d4af37] to-transparent"></div>
+      {/* Glowing Stars Background */}
+      <div className="absolute inset-0 z-0" aria-hidden="true">
+        <div className="w-full h-full">
+          <Illustration mouseEnter={false} />
+        </div>
       </div>
-
-      {/* Floating accent shapes */}
-      <div className="absolute top-20 right-10 w-72 h-72 bg-[#d4af37] rounded-full filter blur-[150px] opacity-5" aria-hidden="true"></div>
-      <div className="absolute bottom-20 left-10 w-96 h-96 bg-[#d4af37] rounded-full filter blur-[180px] opacity-5" aria-hidden="true"></div>
 
       <div className="w-full max-w-[1600px] mx-auto px-8 md:px-12 lg:px-16 xl:px-20 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">

@@ -5,19 +5,26 @@ import Button from '../ui/Button';
 import { Illustration } from '../ui/glowing-stars';
 import { Sparkles, Award, Zap } from 'lucide-react';
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 import { ANIMATION_VARIANTS, VIEWPORT_CONFIG } from '@/lib/constants';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
 
 export default function Hero() {
   const { t } = useLanguage();
   const sectionRef = useRef<HTMLElement>(null);
+  const videoRef = useRef<HTMLVideoElement>(null);
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ['start start', 'end start'],
   });
 
   const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.playbackRate = 1.25;
+    }
+  }, []);
 
   const scrollToContent = () => {
     const nextSection = document.querySelector('#statement-panel');
@@ -30,11 +37,20 @@ export default function Hero() {
       className="relative h-screen flex items-center justify-center overflow-hidden bg-black"
       aria-label="Hero section"
     >
-      {/* Glowing Stars Background */}
+      {/* Video Background */}
       <div className="absolute inset-0 z-0" aria-hidden="true">
-        <div className="w-full h-full">
-          <Illustration mouseEnter={false} />
-        </div>
+        <video
+          ref={videoRef}
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/background-video.mp4" type="video/mp4" />
+        </video>
+        {/* Dark overlay for better text readability */}
+        <div className="absolute inset-0 bg-black/40"></div>
       </div>
 
       <div className="w-full max-w-[1600px] mx-auto px-8 md:px-12 lg:px-16 xl:px-20 relative z-10 pt-24 md:pt-16">

@@ -5,6 +5,7 @@ import Image from 'next/image';
 import { Lightbulb, Zap, Shield, CheckCircle2 } from 'lucide-react';
 import { HoverBorderGradient } from '@/components/ui/hover-border-gradient';
 import { useLanguage } from '@/lib/i18n/LanguageContext';
+import { Illustration } from '../ui/glowing-stars';
 
 export default function About() {
   const { t } = useLanguage();
@@ -34,11 +35,12 @@ export default function About() {
     t('about.feature4'),
   ];
   return (
-    <section className="min-h-screen flex items-center py-12 md:py-16 bg-gradient-to-b from-[#0a0a0a] to-[#000000] relative overflow-hidden">
-      {/* Background decorative elements */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-1/4 left-0 w-96 h-96 bg-[#d4af37] rounded-full filter blur-[200px] opacity-20"></div>
-        <div className="absolute bottom-1/4 right-0 w-96 h-96 bg-[#d4af37] rounded-full filter blur-[200px] opacity-20"></div>
+    <section className="min-h-screen flex items-center py-12 md:py-16 bg-black relative overflow-hidden">
+      {/* Glowing Stars Background */}
+      <div className="absolute inset-0 z-0">
+        <div className="w-full h-full">
+          <Illustration mouseEnter={false} />
+        </div>
       </div>
 
       <div className="w-full max-w-[1600px] mx-auto px-8 md:px-12 lg:px-16 xl:px-20 relative z-10">
